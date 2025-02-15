@@ -1,3 +1,27 @@
+// Add Audio Element and Autoplay Handling
+const audio = document.createElement('audio'); // Create audio element
+audio.id = 'backgroundMusic';
+audio.autoplay = true;
+audio.loop = true;
+
+const source = document.createElement('source');
+source.src = 'img/hbd.mp3'; // Replace with your music file path
+source.type = 'audio/mp3';
+
+audio.appendChild(source);
+document.body.appendChild(audio); // Add to the body
+
+window.addEventListener('load', function() {
+  audio.play().catch(error => {
+    console.error('Autoplay was prevented:', error);
+    const playButton = document.createElement('button');
+    playButton.textContent = 'Play Music';
+    playButton.onclick = () => audio.play();
+    document.body.insertBefore(playButton, document.body.firstChild); // Insert at the beginning of the body
+  });
+});
+
+//END
 // Import the data to customize and insert them into page
 const fetchData = () => {
   fetch("customize.json")
