@@ -1,15 +1,4 @@
-// Add Audio Element and Autoplay Handling
-const audio = document.getElementById('backgroundMusic');
-const playButton = document.getElementById('playButton');
 
-playButton.addEventListener('click', () => {
-  audio.play().catch(error => {
-    console.error("Error playing audio:", error);
-  });
-  playButton.remove(); // Optional: Remove the button after it's clicked
-});
-
-//END
 // Import the data to customize and insert them into page
 const fetchData = () => {
   fetch("customize.json")
